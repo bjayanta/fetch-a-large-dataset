@@ -57,18 +57,6 @@ class PostController extends Controller
             // }
 
             // For bulk insert
-            // collect($posts)->chunk(500)->each(function ($chunk) {
-            //     Post::insert($chunk->map(function ($item) {
-            //         return [
-            //             'placeholder_id' => $item['id'],
-            //             'title' => $item['title'],
-            //             'body' => $item['body'],
-            //             'created_at' => now(),
-            //             'updated_at' => now(),
-            //         ];
-            //     })->toArray());
-            // });
-
             collect($posts)->chunk(500)->each(function ($chunk) {
                 Post::upsert(
                     $chunk->map(function ($item) {
